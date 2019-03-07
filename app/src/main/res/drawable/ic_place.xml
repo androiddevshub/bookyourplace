@@ -1,0 +1,15 @@
+<vector android:height="24dp" android:viewportHeight="496"
+    android:viewportWidth="496" android:width="24dp" xmlns:android="http://schemas.android.com/apk/res/android">
+    <path android:fillColor="#FF000000" android:pathData="m240,80v48h32v-16h-16v-32zM240,80"/>
+    <path android:fillColor="#FF000000" android:pathData="m240,48.504v15.496h16v-15.527c33.313,3.703 59.824,30.215 63.527,63.527h-15.527v16h15.496c-1.543,13.711 -6.969,26.816 -15.754,37.551l12.387,10.137c12.816,-15.664 19.871,-35.441 19.871,-55.688 0,-48.52 -39.48,-88 -88,-88 -20.246,0 -40.023,7.055 -55.688,19.871l10.137,12.387c10.734,-8.785 23.84,-14.211 37.551,-15.754zM240,48.504"/>
+    <path android:fillColor="#FF000000" android:pathData="m303.688,188.129 l-10.137,-12.387c-10.734,8.785 -23.848,14.211 -37.551,15.754v-15.496h-16v15.527c-33.313,-3.703 -59.824,-30.215 -63.527,-63.527h15.527v-16h-15.496c1.543,-13.711 6.969,-26.816 15.754,-37.551l-12.387,-10.137c-12.816,15.664 -19.871,35.441 -19.871,55.688 0,48.52 39.48,88 88,88 20.246,0 40.023,-7.055 55.688,-19.871zM303.688,188.129"/>
+    <path android:fillColor="#FF000000" android:pathData="m120,352h56v16h-56zM120,352"/>
+    <path android:fillColor="#FF000000" android:pathData="m120,384h56v16h-56zM120,384"/>
+    <path android:fillColor="#FF000000" android:pathData="m72,256h56v16h-56zM72,256"/>
+    <path android:fillColor="#FF000000" android:pathData="m72,288h56v16h-56zM72,288"/>
+    <path android:fillColor="#FF000000" android:pathData="m320,352h56v16h-56zM320,352"/>
+    <path android:fillColor="#FF000000" android:pathData="m320,384h56v16h-56zM320,384"/>
+    <path android:fillColor="#FF000000" android:pathData="m368,256h56v16h-56zM368,256"/>
+    <path android:fillColor="#FF000000" android:pathData="m368,288h56v16h-56zM368,288"/>
+    <path android:fillColor="#FF000000" android:pathData="m456,256v-32h-120v32h-36.801l45.41,-61.625c15.301,-20.773 23.391,-45.383 23.391,-71.184v-3.191c0,-66.168 -53.832,-120 -120,-120s-120,53.832 -120,120v3.191c0,25.801 8.09,50.41 23.391,71.184l45.41,61.625h-36.801v-32h-120v32h-40v240h496v-240zM440,240v176h-32v-16h16v-16h-16v-16h16v-16h-16v-16h16v-16h-72v-80zM392,336v80h-88v-80zM144,123.191v-3.191c0,-57.344 46.656,-104 104,-104s104,46.656 104,104v3.191c0,22.352 -7.008,43.688 -20.273,61.695l-83.727,113.625 -83.727,-113.625c-13.266,-18.008 -20.273,-39.344 -20.273,-61.695zM192,416h-88v-80h88zM56,240h88v80h-72v16h16v16h-16v16h16v16h-16v16h16v16h-32zM480,480h-464v-208h24v160h184v-16h-16v-96h-48v-48h48.594l39.406,53.488 39.406,-53.488h48.594v48h-48v96h-16v16h184v-160h24zM480,480"/>
+</vector>
