@@ -5,12 +5,10 @@
 
         <shape android:shape="rectangle">
             <!-- background -->
-            <solid android:color="#6FFF" />
+            <solid android:color="#E7E7E7" />
 
             <!-- corner roundness -->
             <corners android:radius="20dp" />
-
-
 
         </shape>
 

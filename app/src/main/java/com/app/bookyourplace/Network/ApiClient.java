@@ -11,7 +11,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class ApiClient {
 
 
-    private static final String BASE_URL = "https://entnetwrk.com/";
+    private static final String BASE_URL = "https://bookyourplace-brails.herokuapp.com/";
 
     private static Retrofit retrofit = null;
 

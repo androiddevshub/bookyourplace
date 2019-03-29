@@ -1,6 +1,124 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-</RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:background="@android:color/white"
+        android:paddingBottom="20dp"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:src="@drawable/imageback"
+            android:scaleType="centerCrop"
+            android:id="@+id/aimgMain"/>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Place Name"
+            android:gravity="start"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@id/aimgMain"
+            android:textColor="@android:color/black"
+            android:textStyle="bold"
+            android:layout_toLeftOf="@id/place_location_icon"
+            android:textSize="20sp"
+            android:layout_margin="20dp"
+            android:id="@+id/aPlaceName"/>
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:src="@drawable/location_img"
+            android:id="@+id/place_location_icon"
+            android:layout_marginTop="20dp"
+            android:layout_below="@id/aimgMain"
+            android:layout_marginRight="20sp"
+            android:layout_alignParentRight="true"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Place Location"
+            android:drawablePadding="5dp"
+            android:layout_marginLeft="20sp"
+            android:layout_marginRight="20dp"
+            android:id="@+id/aPlaceLocation"
+            android:drawableLeft="@drawable/ic_location"
+            android:layout_below="@id/aPlaceName"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:alpha="0.2"
+            android:layout_marginTop="20dp"
+            android:background="@android:color/darker_gray"
+            android:id="@+id/rlgreyline1"
+            android:layout_below="@id/aPlaceLocation"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_marginLeft="20sp"
+            android:layout_marginRight="20sp"
+            android:layout_marginTop="20sp"
+            android:text="Place Description"
+            android:textSize="18sp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/rlgreyline1"/>
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:paddingBottom="20dp"
+        android:layout_marginTop="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hotel Near By"
+            android:textColor="@android:color/black"
+            android:layout_margin="20dp"
+            android:id="@+id/tvHotelNear"/>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvHotelNear"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="20dp"
+                android:src="@drawable/ic_hotel"/>
+
+            <TextView
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="Hote Name"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Visit"
+                android:layout_marginLeft="20dp"
+                android:layout_gravity="center"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</LinearLayout>
