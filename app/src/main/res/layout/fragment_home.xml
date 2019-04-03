@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginBottom="20dp"
+    tools:context=".View.Activities.DashboardActivity"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="230dp">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="230dp"
+                    android:id="@+id/dashBoardMainImg"
+                    android:scaleType="centerCrop"
+                    android:alpha="0.5"
+                    />
+
+                <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="Hello"-->
+                <!--android:layout_centerHorizontal="true"-->
+                <!--android:layout_marginTop=""-->
+                <!--android:textSize="30sp"/>-->
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_marginTop="10dp"
+                android:layout_height="wrap_content"
+                android:background="@android:color/white">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Explore"
+                    android:textStyle="bold"
+                    android:textColor="@android:color/black"
+                    android:textSize="20sp"
+                    android:id="@+id/tvExplore"
+                    android:layout_margin="20dp"/>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:alpha="0.2"
+                    android:background="@android:color/darker_gray"
+                    android:id="@+id/rlgreyline1"
+                    android:layout_marginBottom="20dp"
+                    android:layout_below="@id/tvExplore"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:paddingBottom="20dp"
+                    android:layout_below="@id/rlgreyline1">
+
+                    <RelativeLayout
+                        android:id="@+id/rlexplorePlaces"
+                        android:layout_weight="1"
+                        android:layout_marginRight="7.5dp"
+                        android:layout_width="wrap_content"
+                        android:background="@drawable/layout_round"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:layout_width="200dp"
+                            android:layout_height="100dp"
+                            android:id="@+id/dashBoardMainPlaceImg"
+
+                            android:scaleType="centerCrop"
+                            />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@android:color/black"
+                            android:textColor="@android:color/white"
+                            android:padding="5dp"
+                            android:id="@+id/tvHistoricalPlaces"
+                            android:layout_below="@id/dashBoardMainPlaceImg"
+                            android:layout_marginTop="-15dp"
+                            android:layout_marginLeft="15dp"
+                            android:text="Historical Places"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="10sp"
+                            android:textColor="@android:color/black"
+                            android:padding="5dp"
+                            android:layout_below="@id/tvHistoricalPlaces"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginBottom="5dp"
+                            android:text="Visit "/>
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_weight="1"
+                        android:layout_marginRight="7.5dp"
+                        android:id="@+id/rlexploreHotels"
+                        android:layout_width="wrap_content"
+                        android:background="@drawable/layout_round"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:layout_width="200dp"
+                            android:layout_height="100dp"
+                            android:id="@+id/dashBoardMainHotelImg"
+
+                            android:scaleType="centerCrop"
+                            />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@android:color/black"
+                            android:textColor="@android:color/white"
+                            android:padding="5dp"
+                            android:id="@+id/tvHotels"
+                            android:layout_below="@id/dashBoardMainHotelImg"
+                            android:layout_marginTop="-15dp"
+                            android:layout_marginLeft="15dp"
+                            android:text="Hotels"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="10sp"
+                            android:textColor="@android:color/black"
+                            android:padding="5dp"
+                            android:layout_below="@id/tvHotels"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginBottom="5dp"
+                            android:text="Hotels"/>
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/white"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:text="Recommend For You"
+                    android:textColor="@android:color/black"
+                    android:layout_margin="10dp"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/show_5_hotels_recycler"
+                    tools:listitem="@layout/layout_small_hotel">
+
+                </androidx.recyclerview.widget.RecyclerView>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>
+

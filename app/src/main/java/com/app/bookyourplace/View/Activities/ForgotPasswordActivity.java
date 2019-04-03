@@ -1,5 +1,6 @@
 package com.app.bookyourplace.View.Activities;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -29,11 +30,13 @@ public class ForgotPasswordActivity extends AppCompatActivity {
     private Button btnSend;
     private String email;
     private PrefUtils prefUtils;
+    private ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forgotpassword);
+        progressDialog = new ProgressDialog(this);
 
         prefUtils = new PrefUtils(this);
         etEmailFP = findViewById(R.id.et_email_forgotP);
@@ -63,6 +66,9 @@ public class ForgotPasswordActivity extends AppCompatActivity {
     }
 
     private void sendOTP(){
+
+        progressDialog.setMessage("Loading...");
+        progressDialog.show();
         final NetworkAPI networkAPI = ApiClient.getClient().create(NetworkAPI.class);
 
         Call<CommonResponse> forgotPasswordCall = networkAPI.forgotPassword("application/json", new User(email));
@@ -71,6 +77,7 @@ public class ForgotPasswordActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<CommonResponse> call, Response<CommonResponse> response) {
                 if (response.isSuccessful()){
+                    progressDialog.dismiss();
                     showToast(response.body().getMessage());
                     Intent intent = new Intent(ForgotPasswordActivity.this, ResetPasswordActivity.class);
                     intent.putExtra("email", email);

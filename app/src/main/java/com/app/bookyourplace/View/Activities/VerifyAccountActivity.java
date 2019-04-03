@@ -1,5 +1,6 @@
 package com.app.bookyourplace.View.Activities;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -30,11 +31,14 @@ public class VerifyAccountActivity extends AppCompatActivity {
     private String otp, email;
     private PrefUtils prefUtils;
     private Intent intent;
+    private ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_verify);
+
+        progressDialog = new ProgressDialog(this);
 
         intent = getIntent();
         email = intent.getStringExtra("email");
@@ -68,6 +72,9 @@ public class VerifyAccountActivity extends AppCompatActivity {
 
     private void verifyOTP(){
 
+        progressDialog.setMessage("Loading...");
+        progressDialog.show();
+
         final NetworkAPI networkAPI = ApiClient.getClient().create(NetworkAPI.class);
 
         Call<CommonResponse> verifyAccountCall = networkAPI.verifyAccount("application/json", new User(email, otp));
@@ -77,6 +84,7 @@ public class VerifyAccountActivity extends AppCompatActivity {
             public void onResponse(Call<CommonResponse> call, Response<CommonResponse> response) {
 
                 if (response.isSuccessful()){
+                    progressDialog.dismiss();
                     showToast(response.body().getMessage());
                     startActivity(new Intent(VerifyAccountActivity.this, LoginActivity.class));
                     finish();

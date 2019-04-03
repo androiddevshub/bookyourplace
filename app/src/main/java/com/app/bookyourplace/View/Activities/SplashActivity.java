@@ -29,7 +29,7 @@ public class SplashActivity extends AppCompatActivity {
             public void run() {
 
                 if(prefUtils.loggedIn()){
-                    startActivity(new Intent(SplashActivity.this,DashboardActivity.class));
+                    startActivity(new Intent(SplashActivity.this,MainActivity.class));
                     finish();
                 }else {
                     startActivity(new Intent(SplashActivity.this,LoginActivity.class));

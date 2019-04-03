@@ -1,5 +1,6 @@
 package com.app.bookyourplace.View.Activities;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -34,10 +35,13 @@ public class LoginActivity extends AppCompatActivity {
     private String email, password;
     private PrefUtils prefUtils;
     private TextView tvForgotPassword, tvRegisterHere;
+    private ProgressDialog progressDialog;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        progressDialog = new ProgressDialog(this);
 
         etEmail = findViewById(R.id.et_email_login);
         etPassword = findViewById(R.id.et_password_login);
@@ -89,6 +93,9 @@ public class LoginActivity extends AppCompatActivity {
 
     private void gologin(){
 
+        progressDialog.setMessage("Logging in...");
+        progressDialog.show();
+
         final NetworkAPI networkAPI = ApiClient.getClient().create(NetworkAPI.class);
 
         Call<CommonResponse> loginResponseCall = networkAPI.login("application/json", new Data1(new Login(email, password)));
@@ -98,6 +105,8 @@ public class LoginActivity extends AppCompatActivity {
             public void onResponse(Call<CommonResponse> call, Response<CommonResponse> response) {
                 if (response.isSuccessful()){
 
+                    progressDialog.dismiss();
+
                     String name = response.body().getUser().getName();
                     String email = response.body().getUser().getEmail();
                     String id = String.valueOf(response.body().getUser().getId());
@@ -105,7 +114,7 @@ public class LoginActivity extends AppCompatActivity {
                     String session_id = response.body().getUser().getSession_id();
 
                     prefUtils.setLoggedIn(session_id, name, email, "", id, phone);
-                    Intent intent = new Intent(LoginActivity.this, DashboardActivity.class);
+                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                     intent.putExtra("session_id", session_id);
                     startActivity(intent);
                     finish();

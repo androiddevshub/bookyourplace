@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp">
+
+        <RelativeLayout
+            android:padding="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:scaleType="centerCrop"
+                android:id="@+id/bookingHotelPicture"
+                android:src="@drawable/hotel"
+                android:layout_alignParentRight="true"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="13sp"
+                android:id="@+id/smallbookingId"
+                android:text="Booking ID : BYPA0245"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Shubham Jain"
+                android:layout_below="@id/smallbookingId"
+                android:layout_marginTop="15dp"
+                android:id="@+id/smallbookingUserName"
+                android:textColor="@android:color/black"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:id="@+id/bookingDate"
+                android:layout_below="@id/smallbookingUserName"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/smallbookingCheckIndate"
+                    android:layout_marginRight="10dp"
+                    android:text="Sun, 17 Mar"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:paddingTop="2dp"
+                    android:paddingBottom="2dp"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:id="@+id/smallbookingNights"
+                    android:layout_height="wrap_content"
+                    android:background="#E7E7E7"
+                    android:text="1 N"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:id="@+id/smallbookingCheckOutDate"
+                    android:layout_height="wrap_content"
+                    android:text="Mon, 18 Mar"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hotel Name"
+                android:layout_marginRight="10dp"
+                android:layout_alignParentLeft="true"
+                android:layout_toLeftOf="@id/bookingHotelPicture"
+                android:layout_below="@id/bookingDate"
+                android:textColor="@android:color/black"
+                android:layout_marginTop="20dp"
+                android:id="@+id/smallbookingHotelName"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_alignParentLeft="true"
+                android:gravity="center_vertical"
+                android:layout_toLeftOf="@id/bookingHotelPicture"
+                android:layout_below="@id/smallbookingHotelName"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_location2"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginRight="10dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/smallbookingHotelLocation"
+                    android:textColor="@android:color/black"
+                    android:layout_marginRight="15dp"
+                    android:text="Hotel Location "/>
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>

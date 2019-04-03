@@ -1,21 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     android:layout_margin="10dp">
 
     <RelativeLayout
-        android:layout_width="200dp"
-        android:layout_height="200dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         android:id="@+id/rl"
         android:background="@drawable/round_image">
 
         <ImageView
             android:layout_width="200dp"
             android:layout_height="200dp"
+            android:id="@+id/imgHotelS"
             android:scaleType="centerCrop"
             android:src="@drawable/hotel"/>
-
 
         <TextView
             android:layout_width="wrap_content"
@@ -23,8 +24,9 @@
             android:text="4.6"
             android:textColor="@android:color/white"
             android:paddingTop="2dp"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
+            android:paddingLeft="5dp"
+            android:id="@+id/hotelRatingTv"
+            android:paddingRight="5dp"
             android:textStyle="bold"
             android:paddingBottom="2dp"
             android:background="@drawable/rate_round"
@@ -38,7 +40,7 @@
 
 
     <RelativeLayout
-        android:layout_width="200dp"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/rl">
 
@@ -47,6 +49,8 @@
             android:layout_height="wrap_content"
             android:text="Hotel Name"
             android:maxLines="1"
+            android:layout_marginRight="10dp"
+            android:textSize="12sp"
             android:ellipsize="end"
             android:textColor="@android:color/black"
             android:textStyle="bold"
@@ -60,6 +64,7 @@
             android:maxLines="1"
             android:text="Hotel Location"
             android:ellipsize="end"
+            android:layout_marginRight="10dp"
             android:textColor="@android:color/black"
             android:layout_below="@id/hotelNameTv"
             android:id="@+id/hotelLocationTv"
@@ -80,23 +85,26 @@
                android:textStyle="bold"
                android:textColor="@android:color/black"
                android:id="@+id/hotelPriceTv"
-               android:textSize="15sp"
+               android:textSize="13sp"
                />
 
            <TextView
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
                android:text="$1650"
+               android:id="@+id/hotelMRPTv"
                android:layout_marginLeft="5dp"
-               android:textSize="10sp"
+               android:visibility="gone"
+               android:textSize="9sp"
               />
 
            <TextView
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
                android:text="30% OFF"
+               android:id="@+id/hotelDiscountTv"
                android:textColor="@android:color/holo_orange_dark"
-               android:textSize="11sp"
+               android:textSize="10sp"
                android:layout_marginLeft="8sp"/>
 
 

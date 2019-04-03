@@ -40,6 +40,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:textSize="13sp"
+                    android:id="@+id/bookedTvId"
                     android:text="Booking ID : BYPA0245"/>
 
             </LinearLayout>
@@ -62,6 +63,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Username"
+                        android:id="@+id/bookedTvUsername"
                         android:layout_marginTop="20dp"
                         android:textColor="@android:color/black"
                         android:layout_centerHorizontal="true"/>
@@ -76,6 +78,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginRight="10dp"
+                            android:id="@+id/bookedTvCheckInDate"
                             android:text="Sun, 17 Mar"/>
 
                         <TextView
@@ -83,6 +86,7 @@
                             android:paddingTop="2dp"
                             android:paddingBottom="2dp"
                             android:paddingLeft="5dp"
+                            android:id="@+id/bookedTvNights"
                             android:paddingRight="5dp"
                             android:layout_height="wrap_content"
                             android:background="#E7E7E7"
@@ -91,6 +95,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_marginLeft="10dp"
+                            android:id="@+id/bookedTvCheckOutDate"
                             android:layout_height="wrap_content"
                             android:text="Mon, 18 Mar"/>
 
@@ -110,7 +115,7 @@
                         android:text="Hotel Name"
                         android:textColor="@android:color/black"
                         android:layout_marginTop="30dp"
-                        android:id="@+id/hotelNameBooked"/>
+                        android:id="@+id/bookedTvHotelName"/>
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -144,6 +149,7 @@
                                     android:layout_marginLeft="10dp"
                                     android:layout_height="wrap_content"
                                     android:layout_marginBottom="10dp"
+                                    android:id="@+id/bookedTvGuestCount"
                                     android:text="2"/>
 
                             </LinearLayout>
@@ -174,6 +180,7 @@
                                     android:layout_marginLeft="10dp"
                                     android:layout_height="wrap_content"
                                     android:text="2"
+                                    android:id="@+id/bookedTvRoomsCount"
                                     android:layout_marginBottom="10dp"/>
 
                             </LinearLayout>
@@ -204,6 +211,7 @@
                                     android:layout_marginLeft="10dp"
                                     android:layout_height="wrap_content"
                                     android:text="$1512"
+                                    android:id="@+id/bookedTvPrice"
                                     android:layout_marginBottom="10dp"/>
 
                             </LinearLayout>
@@ -237,6 +245,7 @@
                            android:layout_height="wrap_content"
                            android:textColor="@android:color/black"
                            android:layout_marginRight="50dp"
+                           android:id="@+id/bookedTvHotelLocation"
                            android:text="Hotel Location"/>
 
                    </LinearLayout>
@@ -248,10 +257,16 @@
                        android:gravity="center"
                        android:layout_marginTop="20dp">
 
-                       <Button
-                           android:layout_width="wrap_content"
-                           android:text="Directions"
-                           android:layout_height="wrap_content" />
+                       <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+                           xmlns:map="http://schemas.android.com/apk/res-auto"
+                           xmlns:tools="http://schemas.android.com/tools"
+                           android:id="@+id/maps_hotel"
+                           android:layout_marginLeft="20dp"
+                           android:layout_marginRight="20dp"
+                           android:layout_marginTop="10dp"
+                           android:name="com.google.android.gms.maps.SupportMapFragment"
+                           android:layout_width="match_parent"
+                           android:layout_height="200dp" />
 
                    </LinearLayout>
 
@@ -267,7 +282,8 @@
                        android:layout_height="wrap_content"
                        android:gravity="center"
                        android:layout_marginTop="20dp"
-                       android:text="Your booking details are sent to as SMS to +91147852369 and in email to xyz@gmail.com"
+                        android:id="@+id/bookedTvUseremail"
+                       android:text="Your booking details are sent to xyz@gmail.com"
                        android:layout_marginLeft="10dp"
                        android:layout_marginRight="10dp"/>
 
@@ -319,6 +335,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
+                        android:id="@+id/bookedTvPricePayable"
                         android:textColor="@android:color/black"
                         android:text="$1455"/>
 
@@ -327,7 +344,8 @@
                 <Button
                     android:layout_width="200dp"
                     android:layout_height="wrap_content"
-                    android:text="Pay Now"/>
+                    android:id="@+id/btnPay"
+                    android:text="Pay at Hotel"/>
 
             </LinearLayout>
 
@@ -361,6 +379,7 @@
                 <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_margin="20dp"
+                    android:id="@+id/rlAssistance"
                     android:padding="15dp"
                     android:background="@drawable/layout_round"
                     android:layout_height="wrap_content">
@@ -380,6 +399,7 @@
                 android:layout_height="wrap_content"
                 android:text="Cancel Booking"
                 android:padding="20dp"
+                android:id="@+id/btnCancelBooking"
                 android:layout_marginTop="20dp"
                 android:layout_below="@id/getAssistance"
                 android:layout_centerHorizontal="true"

@@ -1,5 +1,6 @@
 package com.app.bookyourplace.View.Activities;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -31,6 +32,7 @@ public class ResetPasswordActivity extends AppCompatActivity {
     private String email, otp, password, confirm_password;
     private PrefUtils prefUtils;
     private Intent intent;
+    private ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -38,6 +40,7 @@ public class ResetPasswordActivity extends AppCompatActivity {
         setContentView(R.layout.activity_resetpassword);
 
         prefUtils = new PrefUtils(this);
+        progressDialog = new ProgressDialog(this);
 
         intent = getIntent();
 
@@ -83,6 +86,9 @@ public class ResetPasswordActivity extends AppCompatActivity {
 
     private void resetPassword(){
 
+        progressDialog.setMessage("Loading...");
+        progressDialog.show();
+
         final NetworkAPI networkAPI = ApiClient.getClient().create(NetworkAPI.class);
 
         Call<CommonResponse> resetPasswordCall = networkAPI.resetPassword("application/json", new Data(new User(email, otp, password, confirm_password)));
@@ -91,6 +97,7 @@ public class ResetPasswordActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<CommonResponse> call, Response<CommonResponse> response) {
                 if (response.isSuccessful()){
+                    progressDialog.dismiss();
                     showToast(response.body().getMessage());
                     startActivity(new Intent(ResetPasswordActivity.this, LoginActivity.class));
                     finish();

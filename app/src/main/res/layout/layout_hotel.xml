@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp"
+    android:background="@android:color/white">
     
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -19,11 +21,53 @@
 
                 <ImageView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fitsSystemWindows="true"
+                    android:layout_height="match_parent"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/hotel"
-                    android:id="@+id/imgHotel"/>
+                    android:id="@+id/imgHotelL"/>
+
+                <LinearLayout
+
+                    android:layout_width="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentBottom="true"
+                    android:orientation="horizontal"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="4.6"
+                        android:id="@+id/tvHotelRating"
+                        android:textColor="@android:color/white"
+                        android:paddingTop="2dp"
+                        android:paddingLeft="5dp"
+                        android:paddingBottom="2dp"
+                        android:background="#236601"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="/5"
+                        android:textSize="8sp"
+                        android:gravity="bottom"
+                        android:paddingRight="5dp"
+                        android:textColor="@android:color/white"
+                        android:paddingTop="2dp"
+                        android:paddingBottom="3.5dp"
+                        android:background="#236601"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Excellent"
+                        android:textColor="#236601"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="5dp"
+                        android:paddingTop="2dp"
+                        android:paddingBottom="2dp"
+                        android:background="#A0E17F"/>
+
+                </LinearLayout>
 
                 <ImageView
                     android:layout_width="wrap_content"
@@ -34,20 +78,12 @@
 
                 <RelativeLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="60dp"
+                    android:layout_height="40dp"
+                    android:gravity="center"
                     android:background="@android:color/black"
                     android:alpha=".6"
                     android:layout_alignParentBottom="true">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="$1000"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginLeft="10dp"
-
-                        android:id="@+id/tvHotelMPrice"
-                        android:textColor="@android:color/white"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -55,15 +91,15 @@
                         android:text="$705"
                         android:textSize="20sp"
                         android:id="@+id/tvHotelAPrice"
-                        android:layout_below="@+id/tvHotelMPrice"
+
                         android:layout_marginLeft="10dp"
                         android:textColor="@android:color/white"/>
 
                     <TextView
                         android:layout_width="wrap_content"
-                        android:layout_below="@id/tvHotelMPrice"
                         android:layout_marginLeft="10dp"
                         android:layout_marginTop="6dp"
+                        android:id="@+id/tvHotelDisRate"
                         android:layout_toRightOf="@id/tvHotelAPrice"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="10dp"
@@ -76,6 +112,7 @@
                     android:layout_width="60dp"
                     android:layout_alignParentRight="true"
                     android:layout_alignParentBottom="true"
+                    android:visibility="gone"
                     android:background="@drawable/gradient0"
                     android:layout_height="30dp">
 
@@ -117,48 +154,7 @@
                 android:layout_marginLeft="15dp"
                 />
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_alignParentRight="true"
-                android:orientation="horizontal"
-                android:layout_below="@id/relImage"
-                android:layout_margin="10dp"
-                android:layout_height="wrap_content">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="4.6"
-
-                    android:textColor="@android:color/white"
-                    android:paddingTop="2dp"
-                    android:paddingLeft="5dp"
-                    android:paddingBottom="2dp"
-                    android:background="#236601"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="/5"
-                    android:textSize="8sp"
-                    android:paddingRight="5dp"
-                    android:textColor="@android:color/white"
-                    android:paddingTop="8.5dp"
-                    android:paddingBottom="3.5dp"
-                    android:background="#236601"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Excellent"
-                    android:textColor="#236601"
-                    android:paddingLeft="5dp"
-                    android:paddingRight="5dp"
-                    android:paddingTop="2dp"
-                    android:paddingBottom="2dp"
-                    android:background="#A0E17F"/>
-
-            </LinearLayout>
         </RelativeLayout>
 
     </androidx.cardview.widget.CardView>
