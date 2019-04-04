@@ -1,5 +1,6 @@
 package com.app.bookyourplace.View.Activities;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -34,6 +35,7 @@ public class RegistrationActivity extends AppCompatActivity {
     private PrefUtils prefUtils;
     private CheckBox termCheckBox;
     private TextView tvLoginHere;
+    private ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -41,6 +43,7 @@ public class RegistrationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register);
 
         prefUtils = new PrefUtils(this);
+        progressDialog = new ProgressDialog(this);
 
         etName = findViewById(R.id.et_name_signup);
         etEmail = findViewById(R.id.et_email_signup);
@@ -89,6 +92,8 @@ public class RegistrationActivity extends AppCompatActivity {
     }
 
     private void goRegister(){
+
+        progressDialog.setMessage("Signing up...");
 
         final NetworkAPI networkAPI = ApiClient.getClient().create(NetworkAPI.class);
 
