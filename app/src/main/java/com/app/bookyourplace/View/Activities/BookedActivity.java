@@ -1,6 +1,8 @@
 package com.app.bookyourplace.View.Activities;
 
 import android.content.Intent;
+import android.location.Address;
+import android.location.Geocoder;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -28,7 +30,9 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 import org.json.JSONObject;
 
+import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -150,8 +154,25 @@ public class BookedActivity extends AppCompatActivity implements OnMapReadyCallb
     public void onMapReady(GoogleMap googleMap) {
         mMapHotel = googleMap;
 
-        LatLng hotel = new LatLng(Double.parseDouble(createBooking.getHotelLat()), Double.parseDouble(createBooking.getHotelLong()));
-        mMapHotel.addMarker(new MarkerOptions().position(hotel));
-        mMapHotel.moveCamera(CameraUpdateFactory.newLatLngZoom(hotel, 17f));
+
+        try {
+            Geocoder geocoder = new Geocoder(this);
+            List<Address> addresses;
+            addresses = geocoder.getFromLocationName(createBooking.getHotelName(), 1);
+            if(addresses.size() > 0) {
+                double latitude= addresses.get(0).getLatitude();
+                double longitude= addresses.get(0).getLongitude();
+                LatLng place = new LatLng(latitude, longitude);
+                mMapHotel.addMarker(new MarkerOptions().position(place).title(createBooking.getHotelName()));
+                mMapHotel.moveCamera(CameraUpdateFactory.newLatLngZoom(place, 17f));
+            }
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        // Add a marker in Sydney and move the camera
+//        LatLng place = new LatLng(Double.parseDouble(mPlace.getPlaceLat()), Double.parseDouble(mPlace.getPlaceLong()));
+//        mMapPlace.addMarker(new MarkerOptions().position(place));
+//        mMapPlace.moveCamera(CameraUpdateFactory.newLatLngZoom(place, 17f));
     }
 }

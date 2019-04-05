@@ -111,6 +111,8 @@ public class RegistrationActivity extends AppCompatActivity {
                     try {
                         JSONObject jObjError = new JSONObject(response.errorBody().string());
                         Gson gson = new Gson();
+                        progressDialog.dismiss();
+
                         showToast(jObjError.getJSONArray("errors").toString());
                     } catch (Exception e) {
                         showToast(e.getMessage());

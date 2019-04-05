@@ -1,9 +1,7 @@
-package com.app.bookyourplace.View.Fragments;
+package com.app.bookyourplace.View.Activities;
 
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -16,34 +14,29 @@ import com.app.bookyourplace.Utils.PrefUtils;
 
 import java.util.HashMap;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
+import androidx.appcompat.app.AppCompatActivity;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class ProfileFragment extends Fragment {
+public class ProfileActivity extends AppCompatActivity {
+
 
     private TextView tvUsername, tvUseremail, tvUsermobile;
     private Button btnLogout;
     private PrefUtils prefUtils;
 
-    @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_profile, container, false);
-    }
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.fragment_profile);
 
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-
-        prefUtils = new PrefUtils(getContext());
-        tvUsername = view.findViewById(R.id.tvProfileUsername);
-        tvUseremail = view.findViewById(R.id.tvProfileUseremail);
-        tvUsermobile = view.findViewById(R.id.tvProfileUserPhone);
-        btnLogout = view.findViewById(R.id.btnLogoutuser);
+        prefUtils = new PrefUtils(getApplicationContext());
+        tvUsername = findViewById(R.id.tvProfileUsername);
+        tvUseremail = findViewById(R.id.tvProfileUseremail);
+        tvUsermobile = findViewById(R.id.tvProfileUserPhone);
+        btnLogout = findViewById(R.id.btnLogoutuser);
 
         HashMap<String, String> session = prefUtils.getUserDetails();
         final String session_id = session.get(PrefUtils.KEY_SESSION);
@@ -69,7 +62,7 @@ public class ProfileFragment extends Fragment {
 
                         if (response.isSuccessful()){
 
-                            Toast.makeText(getContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
                             prefUtils.logoutUser();
                         }
 
@@ -85,5 +78,6 @@ public class ProfileFragment extends Fragment {
 
             }
         });
+
     }
 }

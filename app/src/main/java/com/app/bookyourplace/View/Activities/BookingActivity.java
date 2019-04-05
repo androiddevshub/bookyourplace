@@ -1,6 +1,8 @@
 package com.app.bookyourplace.View.Activities;
 
 import android.content.Intent;
+import android.location.Address;
+import android.location.Geocoder;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -23,7 +25,9 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 import org.json.JSONObject;
 
+import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -54,7 +58,6 @@ public class BookingActivity extends AppCompatActivity implements OnMapReadyCall
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.maps_bookingfinal);
         mapFragment.getMapAsync(this);
-
 
         finalBookingId = findViewById(R.id.finalBookingId);
         finalBookingUsername = findViewById(R.id.finalBookingUsername);
@@ -126,9 +129,21 @@ public class BookingActivity extends AppCompatActivity implements OnMapReadyCall
     public void onMapReady(GoogleMap googleMap) {
         maps_bookingfinal = googleMap;
 
-        LatLng booking = new LatLng(Double.parseDouble(bookingDetails.getBookingHotelLat()), Double.parseDouble(bookingDetails.getBookingHotelLong()));
-        maps_bookingfinal.addMarker(new MarkerOptions().position(booking));
-        maps_bookingfinal.moveCamera(CameraUpdateFactory.newLatLngZoom(booking, 17f));
+        try {
+            Geocoder geocoder = new Geocoder(this);
+            List<Address> addresses;
+            addresses = geocoder.getFromLocationName(bookingDetails.getBookingHotelName(), 1);
+            if(addresses.size() > 0) {
+                double latitude= addresses.get(0).getLatitude();
+                double longitude= addresses.get(0).getLongitude();
+                LatLng place = new LatLng(latitude, longitude);
+                maps_bookingfinal.addMarker(new MarkerOptions().position(place).title(bookingDetails.getBookingHotelName()));
+                maps_bookingfinal.moveCamera(CameraUpdateFactory.newLatLngZoom(place, 17f));
+            }
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
     }
 
     private void showToast(String msg){

@@ -58,7 +58,7 @@ public class BookingListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
                     .into(bookingListHolder.smallbookingHotelImage);
         }
 
-        bookingListHolder.smallbookingId.setText(bookingDetails.getBookingId());
+        bookingListHolder.smallbookingId.setText("Booking ID: "+bookingDetails.getBookingId());
         bookingListHolder.smallbookingUserName.setText(bookingDetails.getBookingUsername());
         bookingListHolder.smallbookingCheckIndate.setText(bookingDetails.getBookingStartdate());
         bookingListHolder.smallbookingNights.setText(bookingDetails.getBookingNights());

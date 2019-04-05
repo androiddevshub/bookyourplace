@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:layout_marginTop="20dp"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@android:color/transparent"
+    android:layout_height="50dp">
+
+
+    <!--<ImageView
+        android:id="@+id/navitemimage"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="@dimen/DP10"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/DP10"
+        android:layout_height="wrap_content"
+        android:src="@drawable/home" />-->
+
+    <ImageView
+        android:id="@+id/navitemimage"
+        android:layout_width="25dp"
+        android:layout_marginTop="20dp"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="10dp"
+
+        android:layout_height="25dp"
+        android:src="@drawable/ic_explore" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@id/navitemimage"
+        android:textStyle="bold"
+        android:text="Home"
+
+        android:id="@+id/navitemtitle"
+        android:textColor="#0098D2"
+        android:textSize="16sp" />
+
+
+    <RelativeLayout
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
+        android:background="#0098D2"/>
+
+
+</RelativeLayout>

@@ -92,6 +92,8 @@ public class VerifyAccountActivity extends AppCompatActivity {
                     try {
                         JSONObject jObjError = new JSONObject(response.errorBody().string());
                         showToast(jObjError.getString("errors"));
+                        progressDialog.dismiss();
+
                     } catch (Exception e) {
                         showToast(e.getMessage());
                     }

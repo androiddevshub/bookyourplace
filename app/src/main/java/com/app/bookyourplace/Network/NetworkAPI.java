@@ -31,6 +31,9 @@ public interface NetworkAPI {
     @POST("api/user_verify")
     Call<CommonResponse> verifyAccount(@Header("Content-Type") String type, @Body User user);
 
+    @GET("api/user_logged_in")
+    Call<CommonResponse> checkLogin(@Header("Content-Type") String type, @Header("session-id") String session_id);
+
     @POST("users/password")
     Call<CommonResponse>  forgotPassword(@Header("Content-Type") String type, @Body User user);
 

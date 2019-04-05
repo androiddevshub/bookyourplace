@@ -33,6 +33,7 @@ import java.util.HashMap;
 
 public class DashboardActivity extends AppCompatActivity {
 
+
     private RecyclerView recyclerViewShowHotels;
     private PrefUtils prefUtils;
     private LinearLayoutManager layoutManager;
@@ -46,15 +47,16 @@ public class DashboardActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_dashboard);
+        setContentView(R.layout.fragment_home);
 
-        prefUtils = new PrefUtils(this);
+
+        prefUtils = new PrefUtils(getApplicationContext());
 
         relHotels = findViewById(R.id.rlexploreHotels);
         relPlaces = findViewById(R.id.rlexplorePlaces);
         recyclerViewShowHotels = findViewById(R.id.show_5_hotels_recycler);
         recyclerViewShowHotels.setHasFixedSize(true);
-        layoutManager = new LinearLayoutManager(DashboardActivity.this, LinearLayoutManager.HORIZONTAL, false);
+        layoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
         recyclerViewShowHotels.setLayoutManager(layoutManager);
         hotelArrayList = new ArrayList<>();
 
@@ -64,7 +66,7 @@ public class DashboardActivity extends AppCompatActivity {
 
         try {
 
-            Picasso.with(this)
+            Picasso.with(getApplicationContext())
                     .load("https://res.cloudinary.com/shubjain/image/upload/v1554295119/project/imgageback2.jpg").fit().centerCrop()
                     .error(R.drawable.dummybg)
                     .into(dashboardMain);
@@ -72,14 +74,14 @@ public class DashboardActivity extends AppCompatActivity {
         } catch (Exception e){
 
             e.printStackTrace();
-            Picasso.with(this)
+            Picasso.with(getApplicationContext())
                     .load(R.drawable.dummybg).fit().centerCrop()
                     .into(dashboardMain);
         }
 
         try {
 
-            Picasso.with(this)
+            Picasso.with(getApplicationContext())
                     .load("https://res.cloudinary.com/shubjain/image/upload/v1551402622/project/places/Chester%20Zoo/21077748_10155622886490912_2377762794705033072_n.jpg").fit().centerCrop()
                     .error(R.drawable.dummybg)
                     .into(dashboardPlace);
@@ -87,14 +89,14 @@ public class DashboardActivity extends AppCompatActivity {
         } catch (Exception e){
 
             e.printStackTrace();
-            Picasso.with(this)
+            Picasso.with(getApplicationContext())
                     .load(R.drawable.dummybg).fit().centerCrop()
                     .into(dashboardPlace);
         }
 
         try {
 
-            Picasso.with(this)
+            Picasso.with(getApplicationContext())
                     .load("https://res.cloudinary.com/shubjain/image/upload/v1553280057/project/hotels/Chester%20Zoo/9322751.jpg").fit().centerCrop()
                     .error(R.drawable.dummybg)
                     .into(dashboardHotel);
@@ -102,7 +104,7 @@ public class DashboardActivity extends AppCompatActivity {
         } catch (Exception e){
 
             e.printStackTrace();
-            Picasso.with(this)
+            Picasso.with(getApplicationContext())
                     .load(R.drawable.dummybg).fit().centerCrop()
                     .into(dashboardHotel);
         }
@@ -111,7 +113,7 @@ public class DashboardActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(DashboardActivity.this, ShowPlacesActivity.class);
+                Intent intent = new Intent(getApplicationContext(), ShowPlacesActivity.class);
                 startActivity(intent);
 
             }
@@ -121,7 +123,7 @@ public class DashboardActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(DashboardActivity.this, ShowHotelsActivity.class);
+                Intent intent = new Intent(getApplicationContext(), ShowHotelsActivity.class);
                 startActivity(intent);
 
             }
@@ -132,6 +134,7 @@ public class DashboardActivity extends AppCompatActivity {
         }catch (Exception e){
             e.printStackTrace();
         }
+
 
 
     }
@@ -153,13 +156,14 @@ public class DashboardActivity extends AppCompatActivity {
                 if (response.isSuccessful()){
 
                     hotelArrayList = response.body().getHotelArrayList();
-                    hotelListDashBoardAdapter = new HotelListDashBoardAdapter(hotelArrayList,DashboardActivity.this);
+                    hotelListDashBoardAdapter = new HotelListDashBoardAdapter(hotelArrayList, getApplicationContext());
                     recyclerViewShowHotels.setAdapter(hotelListDashBoardAdapter);
 
                 }else {
                     try {
                         JSONObject jObjError = new JSONObject(response.errorBody().string());
                         showToast(jObjError.getString("errors"));
+                        prefUtils.logoutUser();
                     } catch (Exception e) {
                         showToast(e.getMessage());
                     }
@@ -175,7 +179,6 @@ public class DashboardActivity extends AppCompatActivity {
     }
 
     private void showToast(String msg){
-        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT).show();
     }
-
 }

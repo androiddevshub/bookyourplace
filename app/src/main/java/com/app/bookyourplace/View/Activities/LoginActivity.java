@@ -105,7 +105,6 @@ public class LoginActivity extends AppCompatActivity {
             public void onResponse(Call<CommonResponse> call, Response<CommonResponse> response) {
                 if (response.isSuccessful()){
 
-                    progressDialog.dismiss();
 
                     String name = response.body().getUser().getName();
                     String email = response.body().getUser().getEmail();
@@ -124,6 +123,7 @@ public class LoginActivity extends AppCompatActivity {
                     try {
                         JSONObject jObjError = new JSONObject(response.errorBody().string());
                         showToast(jObjError.getString("errors"));
+                        progressDialog.dismiss();
                     } catch (Exception e) {
                         showToast(e.getMessage());
                     }

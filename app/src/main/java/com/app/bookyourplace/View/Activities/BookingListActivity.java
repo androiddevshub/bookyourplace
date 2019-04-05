@@ -26,7 +26,6 @@ import retrofit2.Response;
 
 public class BookingListActivity extends AppCompatActivity {
 
-    private Toolbar toolbarBookingsList;
     private RecyclerView recyclerViewShowBookings;
     private PrefUtils prefUtils;
     private LinearLayoutManager layoutManager;
@@ -40,36 +39,26 @@ public class BookingListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_booking_list);
 
-        toolbarBookingsList = findViewById(R.id.toolbarShowHotels);
-        setSupportActionBar(toolbarBookingsList);
-        toolbarBookingsList.setTitle("BOOKINGS LIST");
-        progressDialog = new ProgressDialog(this);
-        prefUtils = new PrefUtils(this);
-        recyclerViewShowBookings = findViewById(R.id.show_all_hotels_recycler);
+        Toast.makeText(this, "innnnn", Toast.LENGTH_SHORT).show();
+
+        progressDialog = new ProgressDialog(getApplicationContext());
+        prefUtils = new PrefUtils(getApplicationContext());
+        recyclerViewShowBookings = findViewById(R.id.show_all_booking_recycler);
         recyclerViewShowBookings.setHasFixedSize(true);
-        layoutManager = new LinearLayoutManager(BookingListActivity.this);
+        layoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerViewShowBookings.setLayoutManager(layoutManager);
         bookingDetailsArrayList = new ArrayList<>();
         tvBookingDo = findViewById(R.id.tvDoBooking);
 
-        try{
+        try {
             getBookingsList();
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
+
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        try{
-            getBookingsList();
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-    }
-
-    private void getBookingsList(){
+    private void getBookingsList() {
 
         progressDialog.setMessage("Please wait until your data loads");
         progressDialog.show();
@@ -77,21 +66,21 @@ public class BookingListActivity extends AppCompatActivity {
         HashMap<String, String> session = prefUtils.getUserDetails();
         final String session_id = session.get(PrefUtils.KEY_SESSION);
 
-        final Call<BookingAllResponse> bookingAllResponseCall = networkAPI.getBookings("application/json",session_id);
+        final Call<BookingAllResponse> bookingAllResponseCall = networkAPI.getBookings("application/json", session_id);
 
         bookingAllResponseCall.enqueue(new Callback<BookingAllResponse>() {
             @Override
             public void onResponse(Call<BookingAllResponse> call, Response<BookingAllResponse> response) {
-                if (response.isSuccessful()){
+                if (response.isSuccessful()) {
                     progressDialog.dismiss();
                     bookingDetailsArrayList = response.body().getBookingDetailsArrayList();
-                    if (bookingDetailsArrayList.size() == 0){
+                    if (bookingDetailsArrayList.size() == 0) {
                         tvBookingDo.setVisibility(View.VISIBLE);
-                    }else {
-                        bookingListAdapter = new BookingListAdapter(bookingDetailsArrayList,BookingListActivity.this);
+                    } else {
+                        bookingListAdapter = new BookingListAdapter(bookingDetailsArrayList, getApplicationContext());
                         recyclerViewShowBookings.setAdapter(bookingListAdapter);
                     }
-                }else {
+                } else {
                     try {
                         JSONObject jObjError = new JSONObject(response.errorBody().string());
                         showToast(jObjError.getString("errors"));
@@ -100,6 +89,7 @@ public class BookingListActivity extends AppCompatActivity {
                     }
                 }
             }
+
             @Override
             public void onFailure(Call<BookingAllResponse> call, Throwable t) {
 
@@ -107,7 +97,8 @@ public class BookingListActivity extends AppCompatActivity {
         });
     }
 
-    private void showToast(String msg){
-        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+    private void showToast(String msg) {
+        Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT).show();
     }
-}
+
+}  
